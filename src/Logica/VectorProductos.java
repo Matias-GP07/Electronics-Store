@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Logica;
+
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author garci
@@ -21,13 +23,23 @@ public class VectorProductos {
     }
 
     private int posicion = 0;
-    
+
     public void AgregarProducto(InfoProductos producto) {
-        if (posicion < productoAgg.length){
+        if (posicion < productoAgg.length) {
             productoAgg[posicion] = producto;
             posicion++;
         } else {
             JOptionPane.showMessageDialog(null, "El vector ya se encuentra lleno.");
         }
+    }
+
+    public InfoProductos buscarCodigoProd(String codigoProd) {
+        for (int i = 0; i < productoAgg.length; i++) {
+            if (productoAgg[i].getCodigoProd().equals(codigoProd)) {
+                return productoAgg[i];
+            }
+        }
+
+        return null;
     }
 }
