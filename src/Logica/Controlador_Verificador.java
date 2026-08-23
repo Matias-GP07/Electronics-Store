@@ -9,7 +9,7 @@ package Logica;
  * @author garci
  */
 public class Controlador_Verificador {
-
+    
     private double ganancia;
     private double impuestoGanancia;
     private double valorTotalVenta;
