@@ -63,6 +63,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         TBuscarCodigoProd = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Software Tienda Electrodomésticos");
@@ -213,7 +214,9 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
@@ -234,12 +237,21 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Metodo Burbuja");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(54, 54, 54)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(40, 40, 40))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -264,7 +276,9 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(TBuscarCodigoProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton4))
                 .addGap(37, 37, 37))
         );
 
@@ -303,6 +317,8 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
         if (ProductoBuscado != null){
             cv1.gananciasProd(ProductoBuscado);
             jTextArea2.setText(cv1.infoGananciasProd(ProductoBuscado));
+        } else {
+            JOptionPane.showMessageDialog(null, "Producto no encontrado.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -329,6 +345,13 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
     private void TBuscarCodigoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TBuscarCodigoProdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TBuscarCodigoProdActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        v1.metodoBurbuja();
+        
+        jTextArea2.setText(v1.mostrarOrdenamientoBurbuja());
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,6 +389,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

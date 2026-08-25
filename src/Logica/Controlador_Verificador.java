@@ -26,7 +26,7 @@ public class Controlador_Verificador {
         valorTotalVenta = ganancia - impuestoGanancia;
 
     }
-
+    
     public String infoGananciasProd(InfoProductos producto) {
         String info = "INFORMACIÓN GANANCIAS PRODUCTO" + "\n";
         info += "PRECIO VENTA:" + producto.getPrecioProd() + "\n";

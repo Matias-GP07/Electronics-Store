@@ -78,14 +78,18 @@ public class InfoProductos {
         this.cantidadProd = cantidadProd;
     }
     
+    public double ganancia(){
+        return precioProd - costoProd;
+    }
+    
     public String infoProducto(InfoProductos producto){
         String info = "Información producto agregado" + "\n\n";
         info += "Nombre producto: " + producto.getNombreProd() + "\n";
         info += "Código producto: " +  producto.getCodigoProd() + "\n";
         info += "Marca producto: " + producto.getMarcaProd() + "\n";
-        info += "Precio producto:" + producto.getPrecioProd() + "\n";
-        info += "Costo producto:" + producto.getCostoProd() + "\n";
-        info += "Cantidad producto" + producto.cantidadProd;
+        info += "Precio producto: " + producto.getPrecioProd() + "\n";
+        info += "Costo producto: " + producto.getCostoProd() + "\n";
+        info += "Cantidad producto: " + producto.cantidadProd;
         
         return info;
     }
