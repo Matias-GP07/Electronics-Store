@@ -7,6 +7,7 @@ package Vista;
 import Logica.Controlador_Verificador;
 import Logica.InfoProductos;
 import Logica.VectorProductos;
+import Logica.Examinador;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,12 +21,14 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
     InfoProductos P = new InfoProductos();
     Controlador_Verificador cv1 = new Controlador_Verificador();
     VectorProductos v1 = new VectorProductos();
+    Examinador e = new Examinador();
 
     /**
      * Creates new form VistaTiendaElectro
      */
     public VistaTiendaElectro() {
         initComponents();
+        BotonAgregarProd.setEnabled(false);
     }
 
     /**
@@ -56,7 +59,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BotonAgregarProd = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
@@ -109,10 +112,10 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Agregar producto");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BotonAgregarProd.setText("Agregar producto");
+        BotonAgregarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BotonAgregarProdActionPerformed(evt);
             }
         });
 
@@ -157,7 +160,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(BotonAgregarProd)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -193,7 +196,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(BotonAgregarProd))
                 .addGap(24, 24, 24))
         );
 
@@ -326,21 +329,49 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
         // TODO add your handling code here:
         v1.crearVectorProd(Integer.parseInt(JOptionPane.showInputDialog(
                 "Ingresar la cantidad de productos a ingresar")));
+        
+        BotonAgregarProd.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BotonAgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAgregarProdActionPerformed
         // TODO add your handling code here:
-        InfoProductos productoAgg = new InfoProductos(TNombreP.getText(),
-                TCodigoP.getText(),
-                TMarcaP.getText(),
-                Double.parseDouble(TPrecioP.getText()),
-                Double.parseDouble(TCostoP.getText()),
-                Integer.parseInt(TCantidadP.getText()));
+        String nombreProd = e.ExaminadorTxt(TNombreP, "Error, debe ingresar nombre del producto");
+        if(nombreProd == null){
+            return;
+        }
+        
+        String codigoProd = e.ExaminadorTxt(TCodigoP, "Error, debe ingresar el código del producto");
+        if(codigoProd == null){
+            return;
+        }
+        
+        String marcaProd = e.ExaminadorTxt(TMarcaP, "Error, debe ingresar la marca del producto");
+        if(marcaProd == null){
+            return;
+        }
+        
+        double precioProd = e.ExaminadorDouble(TPrecioP, "Error, debe ingresar el precio del producto");
+        if(precioProd == 0){
+            return;
+        }
+        
+        double costoProd = e.ExaminadorDouble(TCostoP, "Error, debe ingresar el costo del producto");
+        if(costoProd == 0){
+            return;
+        }
+        
+        int cantidadProd = e.ExaminadorInt(TCantidadP, "Error, debe ingresar la cantidad de producto");
+        if(cantidadProd == 0){
+            return;
+        }        
+        
+        InfoProductos productoAgg = new InfoProductos(
+            nombreProd, codigoProd, marcaProd, precioProd, costoProd, cantidadProd);
         
         v1.AgregarProducto(productoAgg);
         
         jTextArea1.setText(P.infoProducto(productoAgg));
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BotonAgregarProdActionPerformed
 
     private void TBuscarCodigoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TBuscarCodigoProdActionPerformed
         // TODO add your handling code here:
@@ -379,6 +410,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAgregarProd;
     private javax.swing.JTextField TBuscarCodigoProd;
     private javax.swing.JTextField TCantidadP;
     private javax.swing.JTextField TCodigoP;
@@ -388,7 +420,6 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
     private javax.swing.JTextField TPrecioP;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
