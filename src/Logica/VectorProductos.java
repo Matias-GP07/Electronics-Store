@@ -47,7 +47,7 @@ public class VectorProductos {
     public void metodoBurbuja() {
         for (int i = 0; i < productoAgg.length - 1; i++) { //Este for sirve para darle las vueltas al contenido del vector
             for (int j = 0; j < productoAgg.length - 1; j++) { //Este for sirve para ordenar el vector e ir cambiando las posicines mediante un condicional.
-                if (productoAgg[j] != null && productoAgg[j+1] != null && productoAgg[j].ganancia() < productoAgg[j + 1].ganancia()) {
+                if (productoAgg[j] != null && productoAgg[j + 1] != null && productoAgg[j].ganancia() < productoAgg[j + 1].ganancia()) {
                     InfoProductos aux;
                     aux = productoAgg[j];
                     productoAgg[j] = productoAgg[j + 1];
@@ -56,20 +56,53 @@ public class VectorProductos {
             }
         }
     }
-    
-    public String mostrarOrdenamientoBurbuja(){
-        String info="GANANCIAS ORGANIZADAS DE MAYOR A MENOR\n\n";
-        
-        for(int i = 0; i < productoAgg.length; i++){
-            
+
+    public String mostrarOrdenamientoBurbuja() {
+        String info = "GANANCIAS ORGANIZADAS DE MAYOR A MENOR\n\n";
+
+        for (int i = 0; i < productoAgg.length; i++) {
+
             info += "----------------------------------------------------- \n";
-            
+
             info += "Nombre producto: " + productoAgg[i].getNombreProd() + "\n";
             info += "Código proucto: " + productoAgg[i].getCodigoProd() + "\n";
             info += "Marca producto: " + productoAgg[i].getMarcaProd() + "\n";
             info += "Ganancia producto: " + productoAgg[i].ganancia() + "\n";
-            
+
         }
+        return info;
+    }
+
+    public void metodoInsercion() {
+        for (int i = 1; i < productoAgg.length; i++) {
+            InfoProductos aux = productoAgg[i];
+            int j = i - 1;
+
+            while (j >= 0 && productoAgg[j].getNombreProd().compareTo(aux.getNombreProd()) > 0) {
+                productoAgg[j + 1] = productoAgg[j];
+
+                j--;
+            }
+
+            productoAgg[j + 1] = aux;
+        }
+    }
+
+    public String mostrarOrdenamientoAlfabetico() {
+        String info = "ORDENAMIENTO POR ORDENAMIENTO ALFABETICO \n\n";
+
+        for (int i = 0; i < productoAgg.length; i++) {
+            
+            info += "----------------------------------------------------- \n";
+            
+            info += "Nombre producto: " + productoAgg[i].getNombreProd() + "\n";
+            info += "Código producto: " + productoAgg[i].getCodigoProd() + "\n";
+            info += "Marca producto: " + productoAgg[i].getMarcaProd() + "\n";
+            info += "Precio producto: " + productoAgg[i].getPrecioProd() + "\n";
+            info += "Costo producto: " + productoAgg[i].getCostoProd() + "\n";
+            info += "Cantidad producto: " + productoAgg[i].getCantidadProd() + "\n";
+        }
+        
         return info;
     }
 }

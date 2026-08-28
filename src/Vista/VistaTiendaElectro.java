@@ -67,6 +67,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         TBuscarCodigoProd = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Software Tienda Electrodomésticos");
@@ -247,23 +248,34 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Buscar Alfabeticamente");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(TBuscarCodigoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(TBuscarCodigoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -280,12 +292,13 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
                             .addComponent(TBuscarCodigoProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1))
                 .addGap(37, 37, 37))
         );
 
-        jTabbedPane1.addTab("Busacar Productos", jPanel4);
+        jTabbedPane1.addTab("Buscar Productos", jPanel4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -384,6 +397,13 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
         jTextArea2.setText(v1.mostrarOrdenamientoBurbuja());
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        v1.mostrarOrdenamientoAlfabetico();
+        
+        jTextArea2.setText(v1.mostrarOrdenamientoAlfabetico());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -420,6 +440,7 @@ public class VistaTiendaElectro extends javax.swing.JFrame {
     private javax.swing.JTextField TPrecioP;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
