@@ -13,30 +13,42 @@ import javax.swing.JOptionPane;
 public class VectorProductos {
 
     private static InfoProductos[] productoAgg;
+    private int cantidadProductos = 0;
 
+    public InfoProductos[] getProductoAgg() {
+        return productoAgg;
+    }
+
+    public int getCantidadProductos() {
+        return cantidadProductos;
+    }
+    
     public void crearVectorProd(int cantidadProdAgr) {
         if (cantidadProdAgr <= 0) {
             JOptionPane.showMessageDialog(null, "Error, la cantidad debe ser mayor a cero");
             cantidadProdAgr = 0;
         } else {
             productoAgg = new InfoProductos[cantidadProdAgr];
+            cantidadProductos = 0;
+            posicion = 0;
         }
     }
-
+    
     private int posicion = 0;
 
     public void AgregarProducto(InfoProductos producto) {
         if (posicion < productoAgg.length) {
             productoAgg[posicion] = producto;
             posicion++;
+            cantidadProductos++;
         } else {
             JOptionPane.showMessageDialog(null, "El vector ya se encuentra lleno.");
         }
     }
 
     public InfoProductos buscarCodigoProd(String codigoProd) {
-        for (int i = 0; i < productoAgg.length; i++) {
-            if (productoAgg[i] != null && productoAgg[i].getCodigoProd().equals(codigoProd)) {
+        for (int i = 0; i < cantidadProductos; i++) {
+            if (productoAgg[i].getCodigoProd().equals(codigoProd)) {
                 return productoAgg[i];
             }
         }
@@ -45,9 +57,9 @@ public class VectorProductos {
     }
 
     public void metodoBurbuja() {
-        for (int i = 0; i < productoAgg.length - 1; i++) { //Este for sirve para darle las vueltas al contenido del vector
-            for (int j = 0; j < productoAgg.length - 1; j++) { //Este for sirve para ordenar el vector e ir cambiando las posicines mediante un condicional.
-                if (productoAgg[j] != null && productoAgg[j + 1] != null && productoAgg[j].ganancia() < productoAgg[j + 1].ganancia()) {
+        for (int i = 0; i < cantidadProductos - 1; i++) { //Este for sirve para darle las vueltas al contenido del vector
+            for (int j = 0; j < cantidadProductos - 1; j++) { //Este for sirve para ordenar el vector e ir cambiando las posicines mediante un condicional.
+                if (productoAgg[j].ganancia() < productoAgg[j + 1].ganancia()) {
                     InfoProductos aux;
                     aux = productoAgg[j];
                     productoAgg[j] = productoAgg[j + 1];
@@ -57,24 +69,8 @@ public class VectorProductos {
         }
     }
 
-    public String mostrarOrdenamientoBurbuja() {
-        String info = "GANANCIAS ORGANIZADAS DE MAYOR A MENOR\n\n";
-
-        for (int i = 0; i < productoAgg.length; i++) {
-
-            info += "----------------------------------------------------- \n";
-
-            info += "Nombre producto: " + productoAgg[i].getNombreProd() + "\n";
-            info += "Código proucto: " + productoAgg[i].getCodigoProd() + "\n";
-            info += "Marca producto: " + productoAgg[i].getMarcaProd() + "\n";
-            info += "Ganancia producto: " + productoAgg[i].ganancia() + "\n";
-
-        }
-        return info;
-    }
-
     public void metodoInsercion() {
-        for (int i = 1; i < productoAgg.length; i++) {
+        for (int i = 1; i < cantidadProductos; i++) {
             InfoProductos aux = productoAgg[i];
             int j = i - 1;
 
@@ -88,21 +84,22 @@ public class VectorProductos {
         }
     }
 
-    public String mostrarOrdenamientoAlfabetico() {
-        String info = "ORDENAMIENTO POR ORDENAMIENTO ALFABETICO \n\n";
+    public void metodoSeleccion() {
 
-        for (int i = 0; i < productoAgg.length; i++) {
+        for (int i = 0; i < cantidadProductos - 1; i++) {
             
-            info += "----------------------------------------------------- \n";
-            
-            info += "Nombre producto: " + productoAgg[i].getNombreProd() + "\n";
-            info += "Código producto: " + productoAgg[i].getCodigoProd() + "\n";
-            info += "Marca producto: " + productoAgg[i].getMarcaProd() + "\n";
-            info += "Precio producto: " + productoAgg[i].getPrecioProd() + "\n";
-            info += "Costo producto: " + productoAgg[i].getCostoProd() + "\n";
-            info += "Cantidad producto: " + productoAgg[i].getCantidadProd() + "\n";
+            int mayor = i;
+            for (int j = i + 1; j < cantidadProductos; j++) {
+
+                if (productoAgg[j].getCantidadProd() > productoAgg[mayor].getCantidadProd()) {
+                    mayor = j;
+                }
+            }
+
+            InfoProductos aux = productoAgg[i];
+            productoAgg[i] = productoAgg[mayor];
+            productoAgg[mayor] = aux;
         }
-        
-        return info;
     }
+
 }
