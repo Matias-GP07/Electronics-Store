@@ -14,6 +14,7 @@ public class VectorProductos {
 
     private static InfoProductos[] productoAgg;
     private int cantidadProductos = 0;
+    private int posicion = 0;
 
     public InfoProductos[] getProductoAgg() {
         return productoAgg;
@@ -33,8 +34,6 @@ public class VectorProductos {
             posicion = 0;
         }
     }
-    
-    private int posicion = 0;
 
     public void AgregarProducto(InfoProductos producto) {
         if (posicion < productoAgg.length) {

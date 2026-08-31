@@ -28,7 +28,7 @@ public class Controlador_Verificador {
     }
     
     public String infoGananciasProd(InfoProductos producto) {
-        String info = "INFORMACIÓN GANANCIAS PRODUCTO" + "\n";
+        String info = "INFORMACIÓN GANANCIAS PRODUCTO" + "\n\n";
         info += "PRECIO VENTA:" + producto.getPrecioProd() + "\n";
         info += "PRECIO COSTO:" + producto.getCostoProd() + "\n";
         info += "GANANCIAS:" + ganancia + "\n";
